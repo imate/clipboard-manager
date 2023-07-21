@@ -1,1 +1,3 @@
 Clipboard manager
+
+Electron
