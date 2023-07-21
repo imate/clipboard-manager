@@ -12,3 +12,10 @@ npm i
 ```
 npm start
 ```
+
+### GIT
+```
+git add .
+git commit -m "..."        
+git push origin main -f
+```
