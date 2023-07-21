@@ -13,7 +13,7 @@ npm i
 npm start
 ```
 
-### GIT
+### GIT:
 ```
 git add .
 git commit -m "..."        

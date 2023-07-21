@@ -8,6 +8,12 @@ const JSON_FILE_NAME = 'clipboard.json';
 let mainWindow;
 let jetpack = jp.cwd(app.getPath('userData'));
 
+let logger = {
+    log: function (message) {
+        console.log(message);
+    }
+};
+
 const createWindow = () => {
     mainWindow = new BrowserWindow({
         width: 640, height: 480,
@@ -32,7 +38,7 @@ clipboardListener.on('change', () => {
         dataSource.unshift({ date: new Date().toISOString(), value: clipboardy.readSync() });
         refreshList();
     } catch (ex) {
-        console.log('Error on clipboardListener change event: ' + ex.message);
+        logger.log('Error on clipboardListener change event: ' + ex.message);
     }
 });
 
@@ -44,7 +50,7 @@ function refreshList() {
         try {
             dataSource = JSON.parse(jetpack.read(JSON_FILE_NAME));
         } catch (ex) {
-            console.log(ex.message);
+            logger.log(ex.message);
             dataSource = [];
         }
     }
@@ -80,4 +86,20 @@ ipcMain.on('clear-list', async function (e) {
 
 ipcMain.on('refresh-list', async function (e) {
     refreshList();
+});
+
+let listening = true;
+
+ipcMain.on('toggle-listening', async function (e) {
+    try {
+        if (listening) {
+            clipboardListener.stopListening();
+        } else {
+            clipboardListener.startListening();
+        }
+        listening = !listening;
+        mainWindow.webContents.send('indicate-listening', listening);
+    } catch (ex) {
+        logger.log(ex.message);
+    }
 });
