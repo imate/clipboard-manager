@@ -17,6 +17,7 @@ let logger = {
 const createWindow = () => {
     mainWindow = new BrowserWindow({
         width: 640, height: 480,
+        icon: 'assets/favicon.ico',
         webPreferences: { nodeIntegration: true, contextIsolation: false }
     })
 

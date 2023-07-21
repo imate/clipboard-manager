@@ -23,17 +23,17 @@ ipcRenderer.on('refresh-list', function (e, data) {
 
 function createRowButtons(i) {
     let html = '<div class="btn-group">';
-    html += '<button class="btn btn-sm btn-outline-dark" onclick="copyItem(' + i + ')"><i class="fa-solid fa-clipboard"></i></button>';
-    html += '<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteItem(' + i + ')"><i class="fa-solid fa-trash"></i></button>';
+    html += '<button class="btn btn-sm btn-outline-secondary small" onclick="copyItem(' + i + ')"><i class="fa-solid fa-clipboard"></i></button>';
+    html += '<button type="button" class="btn btn-sm btn-outline-danger small" onclick="deleteItem(' + i + ')"><i class="fa-solid fa-trash"></i></button>';
     html += '</div>';
     return html;
 }
 
 ipcRenderer.on('indicate-listening', function (e, data) {
     if (data) {
-        $('#btn-toggle-listening').addClass('btn-success').removeClass('btn-danger');
+        $('#btn-toggle-listening').addClass('btn-outline-success').removeClass('btn-outline-danger');
     } else {
-        $('#btn-toggle-listening').addClass('btn-danger').removeClass('btn-success');
+        $('#btn-toggle-listening').addClass('btn-outline-danger').removeClass('btn-outline-success');
     }
 });
 
