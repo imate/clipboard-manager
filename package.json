@@ -9,6 +9,8 @@
   "author": "iMate",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "bootstrap": "^5.3.8",
     "clipboard-event": "^1.6.0",
     "clipboardy": "^2.3.0",
     "electron": "^25.3.0",
