@@ -3,8 +3,6 @@
 
 ### Initialize:
 ```
-bower install bootstrap   
-bower install components-font-awesome
 npm i
 ```
 
